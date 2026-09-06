@@ -1,0 +1,2 @@
+hyprmoncfg-bin
+hyprwhspr
