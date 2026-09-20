@@ -7,6 +7,6 @@
 
 ## Pemahaman codebase (knowledge graph ringan)
 
-- Saat mulai kerja di repo yang belum dikenal: petakan dulu arsitektur (entry point, modul utama, alur data, dependensi antar-modul) sebelum mengubah kode. Skill `ln-72-current-architecture-documenter` untuk baseline arsitektur; `systematic-debugging` untuk investigasi bug.
+- Saat mulai kerja di repo yang belum dikenal: petakan dulu arsitektur (entry point, modul utama, alur data, dependensi antar-modul) sebelum mengubah kode. Skill `ln-22-current-architecture-documenter` untuk baseline arsitektur; `systematic-debugging` untuk investigasi bug.
 - Simpan hasil pemetaan di `docs/specs/[id-fitur]/knowledge-graph.json` (entitas: modul/fungsi/tabel + relasinya) agar sesi berikutnya tidak eksplorasi ulang. Perbarui bila kode berubah.
 - Dokumen requirement: `to-spec` untuk PRD/spec fitur, `srs-documentation` (IEEE 830) untuk SRS formal, `adr-drafting` untuk keputusan arsitektur.
