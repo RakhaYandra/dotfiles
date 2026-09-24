@@ -27,7 +27,7 @@
 	enabled = true           # Record and reuse conflict resolutions
 	autoupdate = true        # Apply stored conflict resolutions automatically
 [user]
-	name = Rakha Putra Pebri Yandra
+	name = RakhaYandra
 	email = rakhaputrapebriyandra272@gmail.com
 [credential "https://github.com"]
 	helper = 

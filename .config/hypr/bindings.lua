@@ -30,3 +30,9 @@
 
 -- hyprwhspr - setup nulis ke bindings.conf yg tidak dibaca Omarchy Lua, jadi pindah ke sini
 o.bind("SUPER + ALT + D", "Speech-to-text", "/usr/lib/hyprwhspr/config/hyprland/hyprwhspr-tray.sh record")
+
+-- Dolphin sebagai file manager default (was: nautilus via omarchy-launch-nautilus)
+hl.unbind("SUPER + SHIFT + F")
+o.bind("SUPER + SHIFT + F", "File manager", { launch = "dolphin" })
+hl.unbind("SUPER + ALT + SHIFT + F")
+o.bind("SUPER + ALT + SHIFT + F", "File manager (cwd)", [[sh -c 'uwsm-app -- dolphin "$(omarchy-cmd-terminal-cwd)"']])
