@@ -32,13 +32,15 @@ add obra/superpowers "${G[@]}" \
   -s systematic-debugging -s brainstorming \
   -s writing-plans -s executing-plans \
   -s test-driven-development -s verification-before-completion \
-  -s requesting-code-review -s finishing-a-development-branch
+  -s requesting-code-review -s receiving-code-review -s finishing-a-development-branch \
+  -s dispatching-parallel-agents -s subagent-driven-development \
+  -s using-git-worktrees -s writing-skills
 add vercel-labs/skills --skill find-skills "${G[@]}"
 add mattpocock/skills@code-review "${G[@]}"
 add mattpocock/skills@to-spec "${G[@]}"
 
 # Web dev + testing
-add anthropics/skills "${G[@]}" -s frontend-design -s webapp-testing
+add anthropics/skills "${G[@]}" -s frontend-design -s webapp-testing -s xlsx -s pdf -s docx
 add vercel-labs/agent-skills "${G[@]}" -s web-design-guidelines -s vercel-react-best-practices
 add microsoft/playwright-cli --skill playwright-cli "${G[@]}"
 add currents-dev/playwright-best-practices-skill "${G[@]}"
@@ -53,10 +55,12 @@ add https://github.com/doubleslashse/claude-marketplace --skill srs-documentatio
 SKILLS="$HOME/.agents/skills"
 for s in caveman ponytail systematic-debugging brainstorming writing-plans executing-plans \
   test-driven-development verification-before-completion requesting-code-review \
-  finishing-a-development-branch find-skills code-review to-spec frontend-design \
+  receiving-code-review finishing-a-development-branch dispatching-parallel-agents \
+  subagent-driven-development using-git-worktrees writing-skills \
+  find-skills code-review to-spec frontend-design \
   webapp-testing web-design-guidelines vercel-react-best-practices playwright-cli \
   playwright-best-practices adr-drafting bug-fix-brief ln-22-current-architecture-documenter \
-  srs-documentation; do
+  srs-documentation xlsx pdf docx; do
   [ -e "$SKILLS/$s" ] || { echo "SKIP (not installed): $s"; continue; }
   for d in "$HOME/.codex/skills" "$HOME/.config/opencode/skills" \
     "$HOME/.gemini/skills" "$HOME/.gemini/antigravity-cli/skills" \
