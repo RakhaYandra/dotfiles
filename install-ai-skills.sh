@@ -50,6 +50,11 @@ add giuseppe-trisciuoglio/developer-kit "${G[@]}" -s adr-drafting -s bug-fix-bri
 add levnikolaevich/claude-code-skills@ln-22-current-architecture-documenter "${G[@]}"
 add https://github.com/doubleslashse/claude-marketplace --skill srs-documentation "${G[@]}"
 
+# Anti-slop filter (core + additive skills)
+add https://github.com/miqdadbadjuber/anti-slop "${G[@]}" \
+  -s antislop -s antislop-ui -s antislop-copywriting \
+  -s antislop-human -s antislop-layoutmobile -s antislop-code
+
 # The skills CLI covers most agents via ~/.agents/skills (universal).
 # These file-based harnesses need explicit symlinks to the canonical dir:
 SKILLS="$HOME/.agents/skills"
@@ -60,7 +65,8 @@ for s in caveman ponytail systematic-debugging brainstorming writing-plans execu
   find-skills code-review to-spec frontend-design \
   webapp-testing web-design-guidelines vercel-react-best-practices playwright-cli \
   playwright-best-practices adr-drafting bug-fix-brief ln-22-current-architecture-documenter \
-  srs-documentation xlsx pdf docx; do
+  srs-documentation xlsx pdf docx \
+  antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code; do
   [ -e "$SKILLS/$s" ] || { echo "SKIP (not installed): $s"; continue; }
   for d in "$HOME/.codex/skills" "$HOME/.config/opencode/skills" \
     "$HOME/.gemini/skills" "$HOME/.gemini/antigravity-cli/skills" \
