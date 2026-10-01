@@ -48,3 +48,23 @@
 --     column_width = 0.97,
 --   },
 -- })
+
+-- Hyousee island: float+pin, no border. Posisi: file ~/.config/hyousee/position
+-- ( ditulis app tiap selesai drag; default top-center ).
+do
+  local pf = (os.getenv("HOME") or "/home/rakha") .. "/.config/hyousee/position"
+  local px, py = nil, nil
+  local f = io.open(pf, "r")
+  if f then
+    local s = f:read("*a")
+    f:close()
+    px, py = s:match("(%-?%d+)%s+(%-?%d+)")
+  end
+  if px then
+    o.window({ class = "^(hyousee)$", title = "^(hyousee)$" }, { float = true, pin = true, border_size = 0, opacity = "1 1", move = { px, py } })
+  else
+    o.window({ class = "^(hyousee)$", title = "^(hyousee)$" }, { float = true, pin = true, border_size = 0, opacity = "1 1", move = { "(monitor_w-window_w)/2", "0" } })
+  end
+end
+
+o.window({ class = "^(hyousee)$", title = "^(hyousee-chat)$" }, { float = true, pin = true, border_size = 0, opacity = "1 1", move = { "(monitor_w-480)/2", "210" } })
