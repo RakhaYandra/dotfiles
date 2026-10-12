@@ -27,17 +27,23 @@ add() {
 add https://github.com/juliusbrussee/caveman --skill caveman "${G[@]}"
 add https://github.com/dietrichgebert/ponytail --skill ponytail "${G[@]}"
 
-# Workflow core (meta-skills)
-add obra/superpowers "${G[@]}" \
-  -s systematic-debugging -s brainstorming \
-  -s writing-plans -s executing-plans \
-  -s test-driven-development -s verification-before-completion \
-  -s requesting-code-review -s receiving-code-review -s finishing-a-development-branch \
-  -s dispatching-parallel-agents -s subagent-driven-development \
-  -s using-git-worktrees -s writing-skills
+# Workflow superpowers penuh (upstream menang bila nama sama)
+add obra/superpowers "${G[@]}"
+add mattpocock/skills "${G[@]}"
 add vercel-labs/skills --skill find-skills "${G[@]}"
-add mattpocock/skills@code-review "${G[@]}"
-add mattpocock/skills@to-spec "${G[@]}"
+
+# Koleksi tambahan 2026-10-12 (full isi, upstream menang)
+add browser-use/browser-use "${G[@]}"
+add nextlevelbuilder/ui-ux-pro-max-skill "${G[@]}"
+add addyosmani/agent-skills "${G[@]}"
+add egonex-ai/understand-anything "${G[@]}"
+add composiohq/awesome-claude-skills "${G[@]}"
+add tt-a1i/archify "${G[@]}"
+add pbakaus/impeccable "${G[@]}"
+# graphify-labs/graphify: SKIP (CLI "No skills found", archify mencukupi)
+
+# ADHD-friendly output (tidak ter-cover koleksi di atas)
+add https://github.com/ayghri/i-have-adhd --skill i-have-adhd "${G[@]}"
 
 # Web dev + testing
 add anthropics/skills "${G[@]}" -s frontend-design -s webapp-testing -s xlsx -s pdf -s docx
@@ -66,7 +72,38 @@ for s in caveman ponytail systematic-debugging brainstorming writing-plans execu
   webapp-testing web-design-guidelines vercel-react-best-practices playwright-cli \
   playwright-best-practices adr-drafting bug-fix-brief ln-22-current-architecture-documenter \
   srs-documentation xlsx pdf docx \
-  antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code; do
+  antislop antislop-ui antislop-copywriting antislop-human antislop-layoutmobile antislop-code \
+  grill-me grill-with-docs improve-codebase-architecture \
+  i-have-adhd browser-use ui-ux-pro-max; do
+  [ -e "$SKILLS/$s" ] || { echo "SKIP (not installed): $s"; continue; }
+  for d in "$HOME/.codex/skills" "$HOME/.config/opencode/skills" \
+    "$HOME/.gemini/skills" "$HOME/.gemini/antigravity-cli/skills" \
+    "$HOME/.copilot/skills" "$HOME/.cursor/skills"; do
+    mkdir -p "$d"
+    ln -sfn "$SKILLS/$s" "$d/$s"
+  done
+done
+
+# Tambahan 2026-10-12 (108 skill dari 10 repo; deny 4 sampah via opencode.json permission.skill)
+for s in api-and-interface-design archify artifacts-builder ask-matt banner-design brand \
+  brand-guidelines browser-testing-with-devtools canvas-design changelog-generator chief-of-staff \
+  ci-cd-and-automation claude-handoff cloud codebase-design code-review-and-quality code-simplification \
+  competitive-ads-extractor connect connect-apps constraint-driven-development content-research-writer \
+  context-engineering debugging-and-error-recovery deprecation-and-migration design design-system \
+  developer-growth-analysis diagnosing-bugs diagnosing-superpowers documentation-and-adrs domain-modeling \
+  domain-name-brainstormer doubt-driven-development file-organizer frontend-ui-engineering \
+  git-guardrails-claude-code git-workflow-and-versioning grilling handoff idea-refine image-enhancer \
+  impeccable implement implement-spec incremental-implementation internal-comms interview-me \
+  invoice-organizer langsmith-fetch lead-research-assistant loop-me mcp-builder meeting-insights-analyzer \
+  migrate-to-shoehorn observability-and-instrumentation open-source performance-optimization \
+  planning-and-task-breakdown pr prototype qa raffle-winner-picker remote-browser research retro \
+  scaffold-exercises security-and-hardening setup-matt-pocock-skills setup-pre-commit setup-ts-deep-modules \
+  shipping-and-launch skill-creator skill-share slack-gif-creator slides source-driven-development \
+  spec-driven-development tailored-resume-generator tdd teach template-skill theme-factory to-questionnaire \
+  to-tickets triage twitter-algorithm-optimizer ui-styling understand understand-chat understand-dashboard \
+  understand-diff understand-domain understand-explain understand-figma understand-knowledge understand-onboard \
+  using-agent-skills using-superpowers wait-what wayfinder wizard writing-beats writing-for-agents \
+  writing-fragments writing-shape x402 youtube-downloader; do
   [ -e "$SKILLS/$s" ] || { echo "SKIP (not installed): $s"; continue; }
   for d in "$HOME/.codex/skills" "$HOME/.config/opencode/skills" \
     "$HOME/.gemini/skills" "$HOME/.gemini/antigravity-cli/skills" \
@@ -79,3 +116,5 @@ done
 echo "Done. Restart opencode / open a new session in each harness."
 echo "Global instruction files (tracked in dotfiles, applied automatically):"
 echo "  ~/.claude/CLAUDE.md ~/.config/opencode/AGENTS.md ~/.codex/AGENTS.md ~/.gemini/GEMINI.md"
+echo "  ~/.gemini/AGENTS.md ~/.config/opencode/eval-routing.md ~/.config/opencode/templates/project-AGENTS.md"
+echo "Deny 4 skill sampah via ~/.config/opencode/opencode.json permission.skill (tidak di-track, ada secret)."
