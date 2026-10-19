@@ -1,2 +1,3 @@
 hyprmoncfg-bin
 hyprwhspr
+fukurou-bin
