@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Strip AI/bot co-author trailers. GitHub counts any Co-authored-by identity
+# as a contributor; only the human author should appear.
+msg_file="$1"
+tmp="$(mktemp)"
+grep -viE '^co-authored-by:.*(command ?code ?bot|commandcode|claude|copilot|chatgpt|openai|anthropic|gemini|cursor|windsurf|devin|aider|codeium|tabnine|bot@|noreply@anthropic|noreply@commandcode)' "$msg_file" > "$tmp" || true
+# Collapse trailing blank lines, keep single trailing newline.
+printf '%s\n' "$(cat "$tmp")" > "$msg_file"
+rm -f "$tmp"

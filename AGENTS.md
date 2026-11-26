@@ -14,4 +14,5 @@ Bare repo (`~/.dotfiles`, work-tree `$HOME`). Track hand-picked files only.
 - Satu file per `dotfiles add <path>`. Larang `add -A`.
 - Jangan track secrets: `.ssh/`, `.config/gh/hosts.yml`, `*.credentials.json`, `.cache`, token apapun. Auth via `gh auth login`.
 - Commit: Conventional Commits (`feat:`, `fix:`, `chore:`, `docs:`).
+- JANGAN pernah tambah trailer `Co-authored-by` atas nama bot/agent (CommandCodeBot, Claude, Copilot, dll) — GitHub menghitungnya sebagai contributor. Commit hanya atas nama user.
 - `.bashrc`/`.zshrc` out of scope (user-owned, jangan ubah).

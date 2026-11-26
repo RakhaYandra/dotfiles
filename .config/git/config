@@ -29,6 +29,8 @@
 [user]
 	name = RakhaYandra
 	email = rakhaputrapebriyandra272@gmail.com
+[core]
+	hooksPath = ~/.config/git/hooks
 [credential "https://github.com"]
 	helper = 
 	helper = !gh auth git-credential
